@@ -91,25 +91,28 @@ Vector3 operator/(const Vector3& our, const double number) {
 double Vector3::getNorma() const {
     return sqrt(elem[0] * elem[0] + elem[1] * elem[1] + elem[2] * elem[2]);
 }
-
 void Vector3::normalize() {
-    double magInv = elem[0] * elem[0] + elem[1] * elem[1] + elem[2] * elem[2];
-    double invNorm = 1.0f / sqrt(magInv);
-    elem[0] *= invNorm;
-    elem[1] *= invNorm;
-    elem[2] *= invNorm;
+    double mod = 0.0;
+    for (int i = 0; i < n; i++) {
+        mod += elem[i] * elem[i];
+    }
+    double mag = sqrt(mod);
+    elem[0] /= mag;
+    elem[1] /= mag;
+    elem[2] /= mag;
 }
-
 Vector3 Vector3::getNormalized()const {
     Vector3 result(*this);
-    double magInv = elem[0] * elem[0] + elem[1] * elem[1] + elem[2] * elem[2];
-        double invNorm = 1.0f / sqrt(magInv);
-        result.elem[0] *= invNorm;
-        result.elem[1] *= invNorm;
-        result.elem[2] *= invNorm;
+    double mod = 0.0;
+    for (int i = 0; i < n; i++) {
+        mod += elem[i] * elem[i];
+    }
+    double mag = sqrt(mod);
+    result.elem[0] /= mag;
+    result.elem[1] /= mag;
+    result.elem[2] /= mag;
     return result;
 }
-
 double Vector3::getScalarProduct(const Vector3& other) const {
     return (elem[0] * other.elem[0]) + (elem[1] * other.elem[1]) + (elem[2] * other.elem[2]);
 }
