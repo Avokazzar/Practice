@@ -1,5 +1,5 @@
 #include "Vector3.h"
-#include<math.h>
+#include<сmath>
 
 using namespace std;
 
