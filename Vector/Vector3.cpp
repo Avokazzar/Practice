@@ -92,17 +92,14 @@ double Vector3::getNorma() const {
     return sqrt(elem[0] * elem[0] + elem[1] * elem[1] + elem[2] * elem[2]);
 }
 void Vector3::normalize() {
-    double mag = sqrt(elem[0] * elem[0] + elem[1] * elem[1] + elem[2] * elem[2]);
+    double mag = getNorma();
     elem[0] /= mag;
     elem[1] /= mag;
     elem[2] /= mag;
 }
 Vector3 Vector3::getNormalized()const {
     Vector3 result(*this);
-    double mag = sqrt(elem[0] * elem[0] + elem[1] * elem[1] + elem[2] * elem[2]);
-    result.elem[0] /= mag;
-    result.elem[1] /= mag;
-    result.elem[2] /= mag;
+    result.normalize();
     return result;
 }
 double Vector3::getScalarProduct(const Vector3& other) const {
