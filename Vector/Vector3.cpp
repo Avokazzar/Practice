@@ -85,7 +85,7 @@ Vector3 operator*(const double number, const Vector3& our) {
 
 Vector3 operator/(const Vector3& our, const double number) {
     double numOver = 1.0f / number;
-    return Vector3(our) = numOver;
+    return Vector3(our) *= numOver;
 }
 
 double Vector3::getNorma() const {
